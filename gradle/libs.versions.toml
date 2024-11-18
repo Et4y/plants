@@ -13,6 +13,7 @@ composeBom = "2024.11.00"
 navigationSafeArgsGradlePlugin = "2.8.4"
 constraintlayout = "2.2.0"
 navigation = "2.8.4"
+room = "2.6.1"
 
 
 [libraries]
@@ -44,6 +45,12 @@ constraintlayout = { module = "androidx.constraintlayout:constraintlayout", vers
 #navigation
 navigation = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 navigation_ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+
+#room
+room_runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room_ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+room_compiler = { module = "androidx.room:room-compiler", version.ref = "room"}
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
