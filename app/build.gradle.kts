@@ -74,6 +74,8 @@ dependencies {
     implementation(libs.glide)
     ksp(libs.glide.compiler)
     implementation(libs.constraintlayout)
+    implementation(libs.paging.runtime)
+
 
 //    navigation
     implementation(libs.navigation)
