@@ -64,6 +64,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    implementation(libs.glide)
+    ksp(libs.glide.compiler)
     implementation(libs.constraintlayout)
 
 //    navigation
