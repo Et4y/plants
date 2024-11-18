@@ -12,6 +12,7 @@ activityCompose = "1.9.3"
 composeBom = "2024.11.00"
 navigationSafeArgsGradlePlugin = "2.8.4"
 constraintlayout = "2.2.0"
+navigation = "2.8.4"
 
 
 [libraries]
@@ -40,6 +41,9 @@ hilt-navigation-fragment = { group = "androidx.hilt", name = "hilt-navigation-fr
 
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
 
+#navigation
+navigation = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+navigation_ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

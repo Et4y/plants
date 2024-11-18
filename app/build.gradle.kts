@@ -66,6 +66,10 @@ dependencies {
 
     implementation(libs.constraintlayout)
 
+//    navigation
+    implementation(libs.navigation)
+    implementation(libs.navigation.ui)
+
 
 //    hilt
     implementation(libs.hilt.android)
