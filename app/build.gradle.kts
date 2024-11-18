@@ -38,7 +38,9 @@ android {
         compose = true
     }
 
-
+    dataBinding {
+        enable = true
+    }
 }
 
 dependencies {
