@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlin.serialization)
+
 }
 
 android {
@@ -32,6 +34,11 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    ksp {
+        arg("dagger.hilt.internal.useAggregatingRootProcessor", "true") // Required for Hilt + KSP
+        arg("dagger.fastInit", "enabled") // Optional for faster initialization
+        arg("dagger.hilt.android.internal.projectType", "APP") // Set to LIBRARY if it's a library module
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -67,6 +74,8 @@ dependencies {
     implementation(libs.glide)
     ksp(libs.glide.compiler)
     implementation(libs.constraintlayout)
+    implementation(libs.paging.runtime)
+
 
 //    navigation
     implementation(libs.navigation)
@@ -81,8 +90,13 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
     implementation(libs.retrofit.converter.moshi)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
     implementation(libs.coroutine.adapter)
     implementation(libs.coroutine.experimental.adapter)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.logging.interceptor) {
+        exclude(group = "org.json", module = "json")
+    }
 
 //    hilt
     implementation(libs.hilt.android)
