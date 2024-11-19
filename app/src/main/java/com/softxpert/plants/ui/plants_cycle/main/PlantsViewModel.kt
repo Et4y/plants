@@ -28,4 +28,12 @@ class PlantsViewModel @Inject constructor(private val repository: PlantsReposito
         }
     }
 
+    fun getFilteredData(id : String){
+        viewModelScope.launch {
+            repository.getFilterPlants(id).collectLatest { state ->
+                _uiState.value = state
+            }
+        }
+    }
+
 }

@@ -16,4 +16,13 @@
         <item>Uzbekistan</item>
     </string-array>
 
+    <string-array name="zones_list_filter">
+        <item>All</item>
+        <item>pal</item>
+        <item>sud</item>
+        <item>mya</item>
+        <item>tcs</item>
+        <item>uzb</item>
+    </string-array>
+
 </resources>

@@ -4,6 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.softxpert.plants.data.end_point.PlantsEndPoint
+import com.softxpert.plants.data.paging.FilterPlantsPaging
 import com.softxpert.plants.data.paging.PlantsPaging
 import com.softxpert.plants.domain.model.plants.PlantModel
 import com.softxpert.plants.domain.repo.PlantsRepository
@@ -24,6 +25,17 @@ class PlantsRepositoryImpl @Inject constructor(
         ),
         pagingSourceFactory =
         { PlantsPaging(plantsEndPoint) }
+    ).flow
+
+
+    override fun getFilterPlants(id : String): Flow<PagingData<PlantModel>> = Pager(
+        config = PagingConfig(
+            pageSize = 20,
+            enablePlaceholders = false,
+            prefetchDistance = 1
+        ),
+        pagingSourceFactory =
+        { FilterPlantsPaging(plantsEndPoint,id) }
     ).flow
 
 

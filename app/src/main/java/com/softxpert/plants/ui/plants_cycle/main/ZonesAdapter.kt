@@ -15,6 +15,7 @@ class ZonesAdapter :
 
     var selectedItemPosition = 0
     private var previousSelectedItemPosition = 0
+    var onItemClicked: ((Int) -> Unit) ?= null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -39,6 +40,7 @@ class ZonesAdapter :
                 notifyItemChanged(previousSelectedItemPosition)
                 notifyItemChanged(selectedItemPosition)
                 previousSelectedItemPosition = bindingAdapterPosition
+                onItemClicked?.invoke(selectedItemPosition)
             }
 
             if (selectedItemPosition == bindingAdapterPosition) {

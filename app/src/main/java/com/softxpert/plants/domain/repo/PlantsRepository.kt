@@ -11,4 +11,6 @@ interface PlantsRepository {
 
      fun getPlants(): Flow<PagingData<PlantModel>>
 
+     fun getFilterPlants(id : String): Flow<PagingData<PlantModel>>
+
 }

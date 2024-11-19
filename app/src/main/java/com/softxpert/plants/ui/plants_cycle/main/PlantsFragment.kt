@@ -21,17 +21,13 @@ class PlantsFragment : BaseFragment<FragmentPlantsBinding>(FragmentPlantsBinding
     private val viewModel by viewModels<PlantsViewModel>()
 
 
-
     private val plantsAdapter by lazy {
         PlantsAdapter()
     }
 
-
-
     private val zonesAadapter by lazy {
         ZonesAdapter()
     }
-
 
 
     override fun onStart() {
@@ -48,10 +44,21 @@ class PlantsFragment : BaseFragment<FragmentPlantsBinding>(FragmentPlantsBinding
         binding.toolbar.init(getString(R.string.plants))
     }
 
-    private fun initZonesRv(){
+    private fun initZonesRv() {
         val zones = resources.getStringArray(R.array.zones_list).toMutableList()
+        val zonesFilter = resources.getStringArray(R.array.zones_list_filter).toMutableList()
+
         binding.rvFilter.adapter = zonesAadapter
         zonesAadapter.submitList(zones)
+
+        zonesAadapter.onItemClicked = { index ->
+            val id = zonesFilter[index]
+            if (id == "All") {
+                viewModel.getData()
+            } else {
+                viewModel.getFilteredData(id)
+            }
+        }
     }
 
     private fun initPlantsRv() {
@@ -76,11 +83,12 @@ class PlantsFragment : BaseFragment<FragmentPlantsBinding>(FragmentPlantsBinding
     private fun addDataToAdapters(it: PagingData<PlantModel>) {
         plantsAdapter.submitData(lifecycle, it)
         lifecycleScope.launch {
-            plantsAdapter.loadStateFlow.collectLatest {loadState ->
+            plantsAdapter.loadStateFlow.collectLatest { loadState ->
                 when (loadState.refresh) {
                     is LoadState.Loading -> {
                         // *do something in UI*
                     }
+
                     is LoadState.Error -> {
                         // *here i wanna do something different actions, whichever exception type*
                     }
