@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_title"
+    style="@style/tv_title"
+    android:layout_marginStart="8dp"
+    android:background="@drawable/bg_white_stroke_gray"
+    android:paddingHorizontal="24dp"
+    android:text="knknk"
+    android:paddingVertical="8dp">
+
+</androidx.appcompat.widget.AppCompatTextView>

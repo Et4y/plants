@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">Plants</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name">Name</string>
+    <string name="year">Year</string>
+    <string name="status">Status</string>
+    <string name="plants">Plants</string>
+
+
+    <string-array name="zones_list">
+        <item>All</item>
+        <item>Palestine</item>
+        <item>Sudan</item>
+        <item>Myanmar</item>
+        <item>Transcaucasus</item>
+        <item>Uzbekistan</item>
+    </string-array>
+
 </resources>

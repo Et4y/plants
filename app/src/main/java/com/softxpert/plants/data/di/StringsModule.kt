@@ -22,7 +22,7 @@ object StringsModule {
 
     @Provides
     @BaseUrl
-    fun provideBaseUrl(): String = "BuildConfig.REMOTE_URL"
+    fun provideBaseUrl(): String = "https://trefle.io"
 
     @Provides
     @RemoteBaseUrl

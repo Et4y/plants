@@ -14,8 +14,8 @@ data class ApiResponse<T>(
 data class PaginationLinks(
     val first: String?,
     val last: String?,
-    val next: String?,
-    val prev: String?,
+    val next: String? = null,
+    val prev: String? = null,
     val self: String?
 )
 

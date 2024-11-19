@@ -50,6 +50,11 @@ android {
     dataBinding {
         enable = true
     }
+    buildFeatures.apply {
+        @Incubating
+        viewBinding = true
+        dataBinding = true
+    }
 
 }
 

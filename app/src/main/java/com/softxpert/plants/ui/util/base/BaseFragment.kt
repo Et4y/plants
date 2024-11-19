@@ -1,15 +1,15 @@
-package com.softxpert.plants.ui.util
+package com.softxpert.plants.ui.util.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
-
+import com.softxpert.plants.databinding.CommonToolbarBinding
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
-
 abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) : Fragment() {
 
 
@@ -40,6 +40,12 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
 
 
     open fun handleToolbar() {}
+
+    fun CommonToolbarBinding.init(title: String) {
+        this.tvToolbarTitle.text = title
+        this.ivBack.setOnClickListener { findNavController().popBackStack() }
+        this.tvToolbarTitle.setOnClickListener { ivBack.performClick() }
+    }
 
 
     override fun onDestroyView() {
