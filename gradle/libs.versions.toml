@@ -24,9 +24,12 @@ retrofit2KotlinxSerializationConverter = "1.0.0"
 
 glide = "4.16.0"
 logging_interceptor = "3.1.0"
-roundcornerimageview = "1.0.3"
-coroutines = "1.8.0"
 
+junit_jupiter = "5.8.2"
+mockk = "1.13.12"
+turbine = "0.12.1"
+core_testing = "2.2.0"
+kotlinx_coroutines_test = "1.8.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -55,7 +58,6 @@ hilt-navigation-fragment = { group = "androidx.hilt", name = "hilt-navigation-fr
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide_compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
-roundcornerimageview = { module = "com.howshea:roundCornerImageView", version.ref = "roundcornerimageview" }
 paging_runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
 
 #navigation
@@ -79,10 +81,14 @@ kotlinx_serialization_json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 
 
 
-#coroutines
-coroutines_core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
-coroutines_android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
-coroutines_test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+#test
+junit_jupiter_api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit_jupiter" }
+junit_jupiter_engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit_jupiter" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+core_testing = { module = "androidx.arch.core:core-testing", version.ref = "core_testing" }
+kotlinx_coroutines_test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx_coroutines_test" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -92,5 +98,4 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 ksp = { id = "com.google.devtools.ksp" , version = "2.0.21-1.0.25" }
 hilt = { id = "com.google.dagger.hilt.android", version = "2.51.1" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-androidx-navigation-safe-args = { id = "androidx.navigation.safeargs.kotlin", version = "2.8.4" }
 

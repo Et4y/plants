@@ -10,6 +10,7 @@ import androidx.paging.PagingData
 import com.softxpert.plants.R
 import com.softxpert.plants.databinding.FragmentPlantsBinding
 import com.softxpert.plants.domain.model.plants.PlantModel
+import com.softxpert.plants.domain.util.UiState
 import com.softxpert.plants.ui.util.base.BaseFragment
 import com.softxpert.plants.ui.util.toGone
 import com.softxpert.plants.ui.util.toJson
@@ -77,7 +78,17 @@ class PlantsFragment : BaseFragment<FragmentPlantsBinding>(FragmentPlantsBinding
                 .uiState
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collectLatest {
-                    addDataToAdapters(it)
+                    when(it){
+                        UiState.Idle -> {}
+                        is UiState.Loading ->{
+
+                        }
+                        is UiState.Error -> {}
+                        is UiState.Success -> {
+                            addDataToAdapters(it.data)
+                        }
+                    }
+
                 }
         }
     }

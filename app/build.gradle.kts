@@ -18,7 +18,6 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,7 +37,10 @@ android {
     ksp {
         arg("dagger.hilt.internal.useAggregatingRootProcessor", "true") // Required for Hilt + KSP
         arg("dagger.fastInit", "enabled") // Optional for faster initialization
-        arg("dagger.hilt.android.internal.projectType", "APP") // Set to LIBRARY if it's a library module
+        arg(
+            "dagger.hilt.android.internal.projectType",
+            "APP"
+        ) // Set to LIBRARY if it's a library module
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -82,6 +84,14 @@ dependencies {
     implementation(libs.paging.runtime)
 
 
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.mockk)
+    testImplementation(libs.turbine)
+    testImplementation(libs.core.testing)
+    testImplementation(libs.kotlinx.coroutines.test)
+
+
 //    navigation
     implementation(libs.navigation)
     implementation(libs.navigation.ui)
@@ -107,4 +117,11 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.fragment)
+}
+
+
+
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }
