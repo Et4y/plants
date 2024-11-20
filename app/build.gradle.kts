@@ -58,6 +58,10 @@ android {
         dataBinding = true
     }
 
+    hilt {
+        enableAggregatingTask = true
+    }
+
 }
 
 dependencies {
@@ -99,6 +103,7 @@ dependencies {
 //    room
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
+    implementation(libs.room.paging)
     ksp(libs.room.compiler)
 
 //    retrofit

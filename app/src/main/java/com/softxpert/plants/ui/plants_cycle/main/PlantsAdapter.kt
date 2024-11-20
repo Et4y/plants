@@ -27,7 +27,7 @@ class PlantsAdapter :
     }
 
 
-    inner class ViewHolder(val binding: ItemPlantBinding) :
+    inner class ViewHolder(private val binding: ItemPlantBinding) :
         BaseViewHolder<PlantModel, ItemPlantBinding>(binding) {
 
         override fun bind() {

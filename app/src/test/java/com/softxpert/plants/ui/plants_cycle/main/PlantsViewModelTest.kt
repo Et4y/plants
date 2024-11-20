@@ -1,5 +1,6 @@
 import androidx.paging.PagingData
 import com.softxpert.plants.MainDispatcherRule
+import com.softxpert.plants.data.local.entity.PlantEntity
 import com.softxpert.plants.domain.model.plants.Links
 import com.softxpert.plants.domain.model.plants.PlantModel
 import com.softxpert.plants.domain.repo.PlantsRepository
