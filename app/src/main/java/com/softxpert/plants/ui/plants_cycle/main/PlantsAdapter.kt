@@ -8,6 +8,7 @@ import com.softxpert.plants.ui.util.base.BaseDiffCallback
 import com.softxpert.plants.ui.util.base.BasePagingRecyclerAdapter
 import com.softxpert.plants.ui.util.base.BaseViewHolder
 import com.softxpert.plants.ui.util.image_util.loadImageFromUrl
+import com.softxpert.plants.ui.util.orNA
 
 class PlantsAdapter :
     BasePagingRecyclerAdapter<PlantModel, ItemPlantBinding, PlantsAdapter.ViewHolder>(
@@ -32,9 +33,9 @@ class PlantsAdapter :
         override fun bind() {
 
             binding.ivPlant.loadImageFromUrl(getRowItem()?.imageUrl)
-            binding.tvName.text = getRowItem()?.commonName
-            binding.tvYear.text = getRowItem()?.year.toString()
-            binding.tvStatus.text = getRowItem()?.status
+            binding.tvName.text = getRowItem()?.commonName.orNA()
+            binding.tvYear.text = getRowItem()?.year.toString().orNA()
+            binding.tvStatus.text = getRowItem()?.status.orNA()
 
         }
 

@@ -4,6 +4,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import com.softxpert.plants.R
@@ -11,6 +12,7 @@ import com.softxpert.plants.databinding.FragmentPlantsBinding
 import com.softxpert.plants.domain.model.plants.PlantModel
 import com.softxpert.plants.ui.util.base.BaseFragment
 import com.softxpert.plants.ui.util.toGone
+import com.softxpert.plants.ui.util.toJson
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -32,9 +34,9 @@ class PlantsFragment : BaseFragment<FragmentPlantsBinding>(FragmentPlantsBinding
 
     override fun onStart() {
         super.onStart()
+
         initZonesRv()
         initPlantsRv()
-        viewModel.getData()
         getOrders()
     }
 
@@ -64,7 +66,8 @@ class PlantsFragment : BaseFragment<FragmentPlantsBinding>(FragmentPlantsBinding
     private fun initPlantsRv() {
         binding.rvPlants.adapter = plantsAdapter
         plantsAdapter.onItemCLick = {
-
+            val action = PlantsFragmentDirections.actionPlantsFragmentToDetailsFragment(it.toJson())
+            findNavController().navigate(action)
         }
     }
 

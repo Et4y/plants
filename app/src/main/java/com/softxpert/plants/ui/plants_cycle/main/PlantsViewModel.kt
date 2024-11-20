@@ -4,6 +4,7 @@ package com.softxpert.plants.ui.plants_cycle.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.softxpert.plants.domain.model.plants.PlantModel
 import com.softxpert.plants.domain.repo.PlantsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,19 +21,27 @@ class PlantsViewModel @Inject constructor(private val repository: PlantsReposito
     val uiState = _uiState
 
 
-    fun getData(){
+    init {
+        getData()
+    }
+
+    fun getData() {
         viewModelScope.launch {
-            repository.getPlants().collectLatest { state ->
-                _uiState.value = state
-            }
+            repository.getPlants()
+                .cachedIn(viewModelScope)
+                .collectLatest { state ->
+                    _uiState.value = state
+                }
         }
     }
 
-    fun getFilteredData(id : String){
+    fun getFilteredData(id: String) {
         viewModelScope.launch {
-            repository.getFilterPlants(id).collectLatest { state ->
-                _uiState.value = state
-            }
+            repository.getFilterPlants(id)
+                .cachedIn(viewModelScope)
+                .collectLatest { state ->
+                    _uiState.value = state
+                }
         }
     }
 

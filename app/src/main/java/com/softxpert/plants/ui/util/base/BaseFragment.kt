@@ -38,8 +38,8 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
 
     open fun receiveData() {}
 
-
     open fun handleToolbar() {}
+
 
     fun CommonToolbarBinding.init(title: String) {
         this.tvToolbarTitle.text = title

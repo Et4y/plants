@@ -7,7 +7,26 @@
 
     <fragment
         android:id="@+id/plantsFragment"
-        android:name="com.softxpert.plants.ui.plants_cycle.main.PlantsFragment" />
+        android:name="com.softxpert.plants.ui.plants_cycle.main.PlantsFragment">
+
+        <action
+            android:id="@+id/action_plantsFragment_to_detailsFragment"
+            app:destination="@id/plantDetailsFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/plantDetailsFragment"
+        android:name="com.softxpert.plants.ui.plants_cycle.details.PlantDetailsFragment">
+        <argument
+            android:name="plant"
+            app:argType="string" />
+    </fragment>
 
 
 </navigation>

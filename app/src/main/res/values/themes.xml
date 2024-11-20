@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Plants" parent="android:Theme.Material.Light.NoActionBar" >
+    <style name="Theme.Plants" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary</item>
         <item name="colorAccent">@color/primary</item>
@@ -11,4 +11,5 @@
         <item name="android:textAlignment">viewStart</item>
         <item name="android:windowBackground">@color/white</item>
     </style>
+
 </resources>
