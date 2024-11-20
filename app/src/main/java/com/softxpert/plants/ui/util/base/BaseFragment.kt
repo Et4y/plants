@@ -8,9 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.softxpert.plants.databinding.CommonToolbarBinding
+import com.softxpert.plants.ui.util.ProgressUtil
+import javax.inject.Inject
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) : Fragment() {
+
+
+    @Inject
+    lateinit var progressUtil: ProgressUtil
 
 
     private var _binding: VB? = null

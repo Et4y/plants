@@ -1,6 +1,8 @@
 package com.softxpert.plants.data.di
 
 import com.softxpert.plants.data.end_point.PlantsEndPoint
+import com.softxpert.plants.data.local.AppDatabase
+import com.softxpert.plants.data.local.dao.PlantDao
 import com.softxpert.plants.data.repo_impl.PlantsRepositoryImpl
 import com.softxpert.plants.domain.repo.PlantsRepository
 import dagger.Module
@@ -17,9 +19,11 @@ object RepoModule {
     @Provides
     @Singleton
     fun providePlantsRepo(
-        plantsEndPoint: PlantsEndPoint
+        plantsEndPoint: PlantsEndPoint,
+        appDatabase: AppDatabase
     ): PlantsRepository = PlantsRepositoryImpl(
-        plantsEndPoint
+        plantsEndPoint,
+        appDatabase
     )
 
 

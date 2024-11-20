@@ -78,13 +78,18 @@ class PlantsFragment : BaseFragment<FragmentPlantsBinding>(FragmentPlantsBinding
                 .uiState
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collectLatest {
-                    when(it){
+                    when (it) {
                         UiState.Idle -> {}
-                        is UiState.Loading ->{
-
+                        is UiState.Loading -> {
+                            progressUtil.showProgress()
                         }
-                        is UiState.Error -> {}
+
+                        is UiState.Error -> {
+                            progressUtil.hideProgress()
+                        }
+
                         is UiState.Success -> {
+                            progressUtil.hideProgress()
                             addDataToAdapters(it.data)
                         }
                     }
@@ -98,17 +103,17 @@ class PlantsFragment : BaseFragment<FragmentPlantsBinding>(FragmentPlantsBinding
         plantsAdapter.submitData(lifecycle, it)
         lifecycleScope.launch {
             plantsAdapter.loadStateFlow.collectLatest { loadState ->
-                when (loadState.refresh) {
+                when (loadState.append) {
                     is LoadState.Loading -> {
-                        // *do something in UI*
+                        progressUtil.showProgress()
                     }
 
                     is LoadState.Error -> {
-                        // *here i wanna do something different actions, whichever exception type*
+                        progressUtil.hideProgress()
                     }
 
                     is LoadState.NotLoading -> {
-
+                        progressUtil.hideProgress()
                     }
                 }
             }

@@ -18,7 +18,9 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class PlantsViewModel @Inject constructor(private val repository: PlantsRepository) : ViewModel() {
+class PlantsViewModel @Inject constructor(
+    private val repository: PlantsRepository,
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow<UiState<PagingData<PlantModel>>>(UiState.Idle)
     val uiState = _uiState

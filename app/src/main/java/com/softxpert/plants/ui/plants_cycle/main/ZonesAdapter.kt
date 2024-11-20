@@ -13,9 +13,9 @@ class ZonesAdapter :
         BaseDiffCallback()
     ) {
 
-    var selectedItemPosition = 0
+    private var selectedItemPosition = 0
     private var previousSelectedItemPosition = 0
-    var onItemClicked: ((Int) -> Unit) ?= null
+    var onItemClicked: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -28,7 +28,7 @@ class ZonesAdapter :
     }
 
 
-    inner class ViewHolder(val binding: ItemZonesBinding) :
+    inner class ViewHolder(private val binding: ItemZonesBinding) :
         BaseViewHolder<String, ItemZonesBinding>(binding) {
 
         override fun bind() {
@@ -44,9 +44,9 @@ class ZonesAdapter :
             }
 
             if (selectedItemPosition == bindingAdapterPosition) {
-                binding.tvTitle.setBackgroundResource(R.drawable.bg_primary)
+                binding.container.setBackgroundResource(R.drawable.bg_primary)
             } else {
-                binding.tvTitle.setBackgroundResource(R.drawable.bg_white_stroke_gray)
+                binding.container.setBackgroundResource(R.drawable.bg_white_stroke_gray)
             }
 
         }

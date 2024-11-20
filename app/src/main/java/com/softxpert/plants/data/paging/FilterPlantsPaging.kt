@@ -18,7 +18,6 @@ class FilterPlantsPaging(
             // Fetch the response from the API
             val response = apiService.getFilteredPlants(id = id, page = page)
 
-            val speciesList = response.data // assuming response contains the list of species
             val nextPage = if (page < response.meta.total) page + 1 else null
 
             return handlePagingResponse(
@@ -28,18 +27,12 @@ class FilterPlantsPaging(
                 response.links
             )
 
-//            LoadResult.Page(
-//                data = speciesList,
-//                prevKey = if (page == 1) null else page - 1,
-//                nextKey = nextPage
-//            )
         } catch (e: Exception) {
             LoadResult.Error(e)
         }
     }
 
     override fun getRefreshKey(state: PagingState<Int, PlantModel>): Int? {
-        // Return the key for refreshing the data.
         return state.anchorPosition
     }
 }
