@@ -61,6 +61,9 @@ class PlantsViewModelTest {
         )
     )
 
+    /**
+     *  pls comment .cashedIn(viewModelScope) in view model before start test
+     */
     @Test
     fun `test success with non-empty Data`() =testScope.runTest {
 
