@@ -25,9 +25,10 @@ fun <T : Any> handlePagingResponse(
             pageIndex + 1
         }
 
+
         PagingSource.LoadResult.Page(
             data = list!!,
-            prevKey = if (pageIndex == 1) null else pageIndex,
+            prevKey = if (pageIndex == 1) null else pageIndex - 1,
             nextKey = nextKey
         )
 

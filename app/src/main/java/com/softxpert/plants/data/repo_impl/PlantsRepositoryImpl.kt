@@ -23,9 +23,8 @@ class PlantsRepositoryImpl @Inject constructor(
 
     override fun getPlants(): Flow<PagingData<PlantModel>> = Pager(
         config = PagingConfig(
-            pageSize = 20, // Number of items per page
-            prefetchDistance = 5, // Fetch next page when 5 items away from end
-            initialLoadSize = 20 // Initial load size (defaults to pageSize * 3)
+            pageSize = 20,
+            initialLoadSize = 20
         ),
         pagingSourceFactory =
         { PlantsPaging(plantsEndPoint) }
@@ -34,9 +33,8 @@ class PlantsRepositoryImpl @Inject constructor(
 
     override fun getFilterPlants(id: String): Flow<PagingData<PlantModel>> = Pager(
         config = PagingConfig(
-            pageSize = 20, // Number of items per page
-            prefetchDistance = 5, // Fetch next page when 5 items away from end
-            initialLoadSize = 20 // Initial load size (defaults to pageSize * 3)
+            pageSize = 20,
+            initialLoadSize = 20
         ),
         pagingSourceFactory =
         { FilterPlantsPaging(plantsEndPoint, id) }

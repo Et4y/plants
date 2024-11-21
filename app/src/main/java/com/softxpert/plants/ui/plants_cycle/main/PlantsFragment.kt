@@ -28,7 +28,7 @@ class PlantsFragment : BaseFragment<FragmentPlantsBinding>(FragmentPlantsBinding
         PlantsAdapter()
     }
 
-    private val zonesAadapter by lazy {
+    private val zonesAdapter by lazy {
         ZonesAdapter()
     }
 
@@ -51,10 +51,10 @@ class PlantsFragment : BaseFragment<FragmentPlantsBinding>(FragmentPlantsBinding
         val zones = resources.getStringArray(R.array.zones_list).toMutableList()
         val zonesFilter = resources.getStringArray(R.array.zones_list_filter).toMutableList()
 
-        binding.rvFilter.adapter = zonesAadapter
-        zonesAadapter.submitList(zones)
+        binding.rvFilter.adapter = zonesAdapter
+        zonesAdapter.submitList(zones)
 
-        zonesAadapter.onItemClicked = { index ->
+        zonesAdapter.onItemClicked = { index ->
             val id = zonesFilter[index]
             if (id == "All") {
                 viewModel.getData()

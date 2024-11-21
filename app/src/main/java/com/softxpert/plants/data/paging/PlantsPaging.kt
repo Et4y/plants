@@ -3,7 +3,6 @@ package com.softxpert.plants.data.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.softxpert.plants.data.end_point.PlantsEndPoint
-import com.softxpert.plants.data.util.handlePagingResponse
 import com.softxpert.plants.domain.model.plants.PlantModel
 
 class PlantsPaging(
@@ -19,13 +18,11 @@ class PlantsPaging(
 
             val nextPage = if (page < response.meta.total) page + 1 else null
 
-            return handlePagingResponse(
-                nextPage!!,
-                response,
-                response.data,
-                response.links
+            LoadResult.Page(
+                data = response.data,
+                prevKey = if (page == 1) null else page - 1,
+                nextKey = nextPage
             )
-
         } catch (e: Exception) {
             LoadResult.Error(e)
         }
